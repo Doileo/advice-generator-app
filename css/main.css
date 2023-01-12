@@ -3,12 +3,12 @@
 /* ----------------- */
 
 :root {
-    /* colors */
-    --clr-light-cyan: 193, 38%, 86%;
-    --clr-green: 150, 100%, 66%;
-    --clr-grayish-blue: 217, 19%, 38%;
-    --clr-dark-grayish-blue: 217, 19%, 24%;
-    --clr-dark-blue: 218, 23%, 16%;
+  /* colors */
+  --clr-light-cyan: 193, 38%, 86%;
+  --clr-green: 150, 100%, 66%;
+  --clr-grayish-blue: 217, 19%, 38%;
+  --clr-dark-grayish-blue: 217, 19%, 24%;
+  --clr-dark-blue: 218, 23%, 16%;
 }
 
 /* ----------------- */
@@ -21,30 +21,30 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Reset margins */
 body,
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
 /* set up the body */
 body {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1rem;
-    background-color: hsl( var(--clr-dark-blue) );
-    line-height: 1.5;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  background-color: hsl(var(--clr-dark-blue));
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* make images easier to work with */
 img {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
 }
 
 /* make form elements easier to work with*/
@@ -52,68 +52,143 @@ input,
 button,
 textarea,
 select {
-    font: inherit;
+  font: inherit;
 }
 
 /* remove animations for people who've turned them off */
 
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
-
 
 /* ------------------ */
 /* Utility classes   */
 /* ----------------- */
 
-.container-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-inline: 1rem;
-    padding-bottom: 3rem;
-    max-width: 80rem;
+.container {
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding: 2.5rem 1rem;
 }
 
 /* colors */
-.text-green {color:hsl( var(--clr-green) );}
-
+.text-green {
+  color: hsl(var(--clr-green));
+}
 
 /*  ==========================================================================
     Author's custom styles - Mobile first design
     ========================================================================== */
 .container {
-    background-color: hsl( var(--clr-grayish-blue) );
+  background-color: hsl(var(--clr-grayish-blue));
+  position: relative;
+  max-width: 33.75rem;
+  width: 90%;
+  min-width: 10rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.28rem;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.advice {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.quote {
+  font-size: 1.5rem;
+  color: hsl(var(--clr-light-cyan));
+}
+
+.line-container {
+  width: 90%;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  padding-top: 0.6rem;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.line-container::before,
+.line-container::after {
+  content: " ";
+  background-color: hsl(var(--clr-light-cyan));
+  opacity: 0.2;
+  width: 70%;
+  height: 1px;
+}
+
+.line-divider-image {
+  background-image: url("../images/pattern-divider-mobile.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 10rem;
+  height: 2rem;
+}
+
+.dice-image {
+  position: absolute;
+  cursor: pointer;
+  background-color: hsl(var(--clr-green));
+  background-image: url("../images/icon-dice.svg");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  transform: translateY(20%) translateX(-50%);
+  left: 50%;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  transition: all ease-in-out 0.3s;
+}
+
+.attribution {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    place-items: center;
-    text-align: center;
-    height: 30vh;
-    width: 350px;
-    margin-top: 6rem;
-    border-radius: 1rem;
+    align-items: center;
 }
 
-h1 {
-    font-size: 1rem;
-    text-transform: uppercase;
+.attribution p { 
+    font-size: 11px; 
+    text-align: center; 
 }
 
-#advice p {
-    font-size: 1.75rem;
-    color:hsl( var(--clr-light-cyan) );
+.attribution a {
+    color: hsl(var(--clr-green));
+    opacity: .3;
+    text-decoration: none;
 }
 
 /* ===================== Media Queries =========================== */
-@media only screen and (min-width: 1440px) {
 
+@media (hover: hover) {
+  .dice-image:hover {
+    box-shadow: -1px 1px 88px 12px rgba(82, 255, 168, 1);
+    transition: all ease-in-out 0.3s;
+  }
 }
 
+@media only screen and (min-width: 1440px) {
+    .container {
+        margin-top: 10rem;
+    }
+
+    .attribution {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
