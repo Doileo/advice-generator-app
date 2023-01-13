@@ -88,7 +88,7 @@ select {
     Author's custom styles - Mobile first design
     ========================================================================== */
 .container {
-  background-color: hsl(var(--clr-grayish-blue));
+  background-color: hsl(var(--clr-dark-grayish-blue));
   position: relative;
   max-width: 33.75rem;
   width: 90%;
@@ -184,11 +184,21 @@ select {
         margin-top: 10rem;
     }
 
+    .quote {
+      padding-inline: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .line-divider-image {
+      background-image: url("../images/pattern-divider-desktop.svg");
+    }
+
     .attribution {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
+        padding-top: 2rem;
     }
 }
