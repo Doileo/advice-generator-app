@@ -90,5 +90,5 @@ Using the fetch method is one of the things I need to practice more. After finis
 
 - Website - [Doina](https://doileo.github.io/portfolio/)
 - Frontend Mentor - [@Doileo](https://www.frontendmentor.io/profile/Doileo)
-- LinkedIn - (https://www.linkedin.com/in/doinaleovchindeveloper/)
+- LinkedIn - [Doina Leovchin](https://www.linkedin.com/in/doinaleovchindeveloper/)
 
