@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: (https://doileo.github.io/advice-generator-app/)
+- Solution URL: [Solution URL here](https://www.frontendmentor.io/solutions/advice-generator-app-PwuHpA1QoP)
+- Live Site URL: [Live Site URL](https://doileo.github.io/advice-generator-app/)
 
 ## My process
 
