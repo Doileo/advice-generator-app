@@ -2,8 +2,8 @@
 /* Custom properties */
 /* ----------------- */
 
+/* Define custom color variables */
 :root {
-  /* colors */
   --clr-light-cyan: 193, 38%, 86%;
   --clr-green: 150, 100%, 66%;
   --clr-grayish-blue: 217, 19%, 38%;
@@ -15,6 +15,7 @@
 /* Reset             */
 /* ----------------- */
 
+/* Apply a modern CSS reset */
 /* https://piccalil.li/blog/a-modern-css-reset/ */
 
 /* Box-sizing */
@@ -72,14 +73,15 @@ select {
 /* Utility classes   */
 /* ----------------- */
 
-.container {
+/* Define a quote-container class to center content on the page */
+.quote-container {
   margin: 0 auto;
   margin-top: 5rem;
   margin-bottom: 5rem;
   padding: 2.5rem 1rem;
 }
 
-/* colors */
+/* Define a text-green class to apply a custom green color to text */
 .text-green {
   color: hsl(var(--clr-green));
 }
@@ -87,7 +89,9 @@ select {
 /*  ==========================================================================
     Author's custom styles - Mobile first design
     ========================================================================== */
-.container {
+
+/* Define styles for the quote container element */
+.quote-container {
   background-color: hsl(var(--clr-dark-grayish-blue));
   position: relative;
   max-width: 33.75rem;
@@ -100,13 +104,13 @@ select {
   text-align: center;
 }
 
-.advice {
+.quote-title {
   font-size: 1rem;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-.quote {
+.quote-text {
   font-size: 1.5rem;
   color: hsl(var(--clr-light-cyan));
 }
@@ -121,6 +125,7 @@ select {
   margin: 0 auto;
 }
 
+/* Adds a horizontal line before and after the line-container element */
 .line-container::before,
 .line-container::after {
   content: " ";
@@ -130,6 +135,7 @@ select {
   height: 1px;
 }
 
+/* Set the background image */
 .line-divider-image {
   background-image: url("../images/pattern-divider-mobile.svg");
   background-repeat: no-repeat;
@@ -138,6 +144,7 @@ select {
   height: 2rem;
 }
 
+/* Style the element that represents a dice image */
 .dice-image {
   position: absolute;
   cursor: pointer;
@@ -153,6 +160,7 @@ select {
   transition: all ease-in-out 0.3s;
 }
 
+/* Style the element that represents the attribution section */
 .attribution {
     display: flex;
     flex-direction: column;
@@ -172,19 +180,25 @@ select {
 
 /* ===================== Media Queries =========================== */
 
+/* Styles for when the user hovers over the dice image */
 @media (hover: hover) {
   .dice-image:hover {
     box-shadow: -1px 1px 88px 12px rgba(82, 255, 168, 1);
     transition: all ease-in-out 0.3s;
-  }
+    -webkit-transition: all ease-in-out 0.3s;
+    -moz-transition: all ease-in-out 0.3s;
+    -ms-transition: all ease-in-out 0.3s;
+    -o-transition: all ease-in-out 0.3s;
+}
 }
 
+/* Media query for screens with a minimum width of 1440px */
 @media only screen and (min-width: 1440px) {
-    .container {
+    .quote-container {
         margin-top: 10rem;
     }
 
-    .quote {
+    .quote-title {
       padding-inline: 1.5rem;
       letter-spacing: 1px;
     }
