@@ -1,6 +1,7 @@
 # Frontend Mentor - Advice generator app solution
 
 This is a solution to the [Advice generator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+The advice generator app generates a new piece of advice by clicking the dice icon.
 
 ## Table of contents
 
@@ -39,9 +40,7 @@ Users should be able to:
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
+- CSS custom properties, Flexbox for styling
 - Mobile-first workflow
 - JavaScript
 
@@ -57,28 +56,45 @@ Here are some of the code snippets I used from the resources I listed in the Use
   }
 }
 ```
+In the CSS snippet above, I used the @media (hover: hover) query to apply a box shadow and transition effect to the dice image when it is hovered over. This ensures that the hover styles are only applied on devices that support hover.
+
 ```js
 'use strict'
 
-diceButton.addEventListener("click", () => {
-  //Request Data
-  fetch(apiUrl, {cache: "no-cache"})
-    .then((response) => response.json())
+// Send request to the advice API
+  fetch(apiUrl, { cache: "no-cache" })
     .then((response) => {
+
+      // Check for errors and handle them
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      // Parse the JSON response
+      return response.json();
+    })
+    .then((response) => {
+      // Extract the advice data from the response
       let data = response.slip;
       let dataId = data.id;
       let dataAdvice = data.advice;
-     //Add to the DOM
+
+      // Update the advice number and text in the DOM
       adviceNumber.innerHTML = `advice # ${dataId}`;
       adviceText.innerHTML = dataAdvice;
+    })
+    .catch((error) => {
+      // Handle errors from the API request
+      console.error("There was an issue with the API:", error);
+      // display an error message to the user and give them the option to try again
     });
-});
-}
 ```
+In the JavaScript snippet above, it's showed how to send a request to an API, parse the response, and handle any errors that may occur. I learned how to handle errors and display error messages to users, as well as how to extract data from a JSON response and update the DOM with that data.
+
 
 ### Continued development
 
-Using the fetch method is one of the things I need to practice more. After finishing this project, I'd like to make more progress on apps that generate variety of things.
+After finishing this project, I'd like to continue practicing with the fetch() method and working with external APIs. I also plan to build more apps that generate random content, as I find this type of interactivity to be both fun and challenging.
 
 ### Useful resources
 
