@@ -162,20 +162,20 @@ select {
 
 /* Style the element that represents the attribution section */
 .attribution {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.attribution p { 
-    font-size: 11px; 
-    text-align: center; 
+.attribution span {
+  color: #efefef;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .attribution a {
-    color: hsl(var(--clr-green));
-    opacity: .3;
-    text-decoration: none;
+  color: #37b578;
+  text-decoration: none;
 }
 
 /* ===================== Media Queries =========================== */
@@ -185,34 +185,51 @@ select {
   .dice-image:hover {
     box-shadow: -1px 1px 88px 12px rgba(82, 255, 168, 1);
     transition: all ease-in-out 0.3s;
-    -webkit-transition: all ease-in-out 0.3s;
-    -moz-transition: all ease-in-out 0.3s;
-    -ms-transition: all ease-in-out 0.3s;
-    -o-transition: all ease-in-out 0.3s;
-}
+  }
 }
 
-/* Media query for screens with a minimum width of 1440px */
-@media only screen and (min-width: 1440px) {
-    .quote-container {
-        margin-top: 10rem;
-    }
+/* Media query for screens with a minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
 
-    .quote-title {
-      padding-inline: 1.5rem;
-      letter-spacing: 1px;
-    }
+  .quote-container {
+    margin-top: 0;
+    padding: 2.5rem 1rem;
+    max-width: 33.75rem;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.28rem;
+    border-radius: 15px;
+    text-align: center;
+  }
 
-    .line-divider-image {
-      background-image: url("../images/pattern-divider-desktop.svg");
-    }
+  .quote-title {
+    padding-inline: 1.5rem;
+    letter-spacing: 1px;
+  }
 
-    .attribution {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        padding-top: 2rem;
-    }
+  .line-divider-image {
+    background-image: url("../images/pattern-divider-desktop.svg");
+  }
+
+  .attribution {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 2rem;
+  }
+
+  .attribution span {
+    margin: 0 0 0 1rem;
+  }
 }
