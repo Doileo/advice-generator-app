@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-// Get elements from the DOM
+// Select DOM elements
 const diceButton = document.querySelector(".button-container");
 const adviceNumber = document.querySelector(".quote-title");
 const adviceText = document.querySelector(".quote-text");
@@ -8,35 +8,45 @@ const adviceText = document.querySelector(".quote-text");
 // API endpoint for advice
 const apiUrl = "https://api.adviceslip.com/advice";
 
-// Handle button click event
-diceButton.addEventListener("click", () => {
+// Function to handle the dice button click event
+const onDiceButtonClick = async () => {
+  try {
+    const advice = await fetchAdvice();
+    updateAdvice(advice);
+  } catch (error) {
+    console.error("There was an issue with the API:", error);
+    displayErrorMessage(
+      "Sorry, we couldn't get advice at the moment. Please try again later."
+    );
+  }
+};
 
-  // Send request to the advice API
-  fetch(apiUrl, { cache: "no-cache" })
-    .then((response) => {
+// Fetch advice from API
+const fetchAdvice = async () => {
+  const response = await fetch(apiUrl, { cache: "no-cache" });
 
-      // Check for errors and handle them
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
 
-      // Parse the JSON response
-      return response.json();
-    })
-    .then((response) => {
-      // Extract the advice data from the response
-      let data = response.slip;
-      let dataId = data.id;
-      let dataAdvice = data.advice;
+  const data = await response.json();
+  return data.slip;
+};
 
-      // Update the advice number and text in the DOM
-      adviceNumber.innerHTML = `advice # ${dataId}`;
-      adviceText.innerHTML = dataAdvice;
-    })
-    .catch((error) => {
-      // Handle errors from the API request
-      console.error("There was an issue with the API:", error);
-      // display an error message to the user and give them the option to try again
-    });
-});
+// Update the UI with the new advice
+const updateAdvice = (advice) => {
+  adviceNumber.textContent = `Advice #${advice.id}`;
+  adviceText.textContent = advice.advice;
+};
 
+// Display error message to the user
+const displayErrorMessage = (message) => {
+  adviceNumber.textContent = "Oops!";
+  adviceText.textContent = message;
+};
+
+// Add event listener to the dice button
+diceButton.addEventListener("click", onDiceButtonClick);
+
+// Add a label to the button for screen readers
+diceButton.setAttribute("aria-label", "Get new advice by clicking this button");
