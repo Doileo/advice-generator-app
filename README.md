@@ -5,16 +5,26 @@ The advice generator app generates a new piece of advice by clicking the dice ic
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
+- [Frontend Mentor - Advice generator app solution](#frontend-mentor---advice-generator-app-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshots](#screenshots)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
+  - [Installation Instructions](#installation-instructions)
+    - [Clone the repository](#clone-the-repository)
+    - [Navigate to the project directory](#navigate-to-the-project-directory)
+    - [Run the project](#run-the-project)
+  - [Dependencies](#dependencies)
+  - [Usage Instructions](#usage-instructions)
+  - [Project Structure](#project-structure)
+    - [Key Files](#key-files)
+  - [Author](#author)
 
 ## Overview
 
@@ -26,9 +36,13 @@ Users should be able to:
 - See hover states for all interactive elements on the page
 - Generate a new piece of advice by clicking the dice icon
 
-### Screenshot
+### Screenshots
 
-![](./images/app-screenshot.png)
+| Device      | State        | Screenshot                                                                |
+| ----------- | ------------ | ------------------------------------------------------------------------- |
+| **Mobile**  | Default View | ![Mobile View](./images/mobile-view-screenshot.png)                       |
+| **Desktop** | Default View | ![Desktop Default View](./images/desktop-default-view-screenshot.png)     |
+| **Desktop** | Hover Effect | ![Hover Effect on Dice Button](./images/dice-button-hover-screenshot.png) |
 
 ### Links
 
@@ -42,69 +56,90 @@ Users should be able to:
 - Semantic HTML5 markup
 - CSS custom properties, Flexbox for styling
 - Mobile-first workflow
-- JavaScript
+- JavaScript (ES6+ features such as async/await)
+- Fetch API for handling external data
+- Accessibility improvements (ARIA labels for interactive elements)
 
 ### What I learned
 
-Here are some of the code snippets I used from the resources I listed in the Useful Resources section below:
+One key takeaway from this project was improving my understanding of async/await for handling API requests. I also learned how to set the aria-label attribute for better accessibility.
 
-```css
-@media (hover: hover) {
-  .dice-image:hover {
-    box-shadow: -1px 1px 88px 12px rgba(82, 255, 168, 1);
-    transition: all ease-in-out 0.3s;
-  }
-}
-```
-In the CSS snippet above, I used the @media (hover: hover) query to apply a box shadow and transition effect to the dice image when it is hovered over. This ensures that the hover styles are only applied on devices that support hover.
+Here’s a snippet demonstrating the use of async/await in my API call:
 
 ```js
-'use strict'
+const fetchAdvice = async () => {
+  const response = await fetch(apiUrl, { cache: "no-cache" });
 
-// Send request to the advice API
-  fetch(apiUrl, { cache: "no-cache" })
-    .then((response) => {
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
 
-      // Check for errors and handle them
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      // Parse the JSON response
-      return response.json();
-    })
-    .then((response) => {
-      // Extract the advice data from the response
-      let data = response.slip;
-      let dataId = data.id;
-      let dataAdvice = data.advice;
-
-      // Update the advice number and text in the DOM
-      adviceNumber.innerHTML = `advice # ${dataId}`;
-      adviceText.innerHTML = dataAdvice;
-    })
-    .catch((error) => {
-      // Handle errors from the API request
-      console.error("There was an issue with the API:", error);
-      // display an error message to the user and give them the option to try again
-    });
+  return (await response.json()).slip;
+};
 ```
-In the JavaScript snippet above, it's showed how to send a request to an API, parse the response, and handle any errors that may occur. I learned how to handle errors and display error messages to users, as well as how to extract data from a JSON response and update the DOM with that data.
 
+- Using await to handle asynchronous operations without .then().
+- Adding { cache: "no-cache" } to ensure fresh data on each request.
+- Handling API response errors gracefully by checking response.ok.
 
 ### Continued development
 
-After finishing this project, I'd like to continue practicing with the fetch() method and working with external APIs. I also plan to build more apps that generate random content, as I find this type of interactivity to be both fun and challenging.
+- Further improvements on handling API errors
+- Enhancing accessibility features and UI responsiveness
+- Experimenting with local storage to save previous advice history
 
 ### Useful resources
 
-- [Resource 1](https://www.udemy.com/course/the-complete-javascript-course/) - These days I'm learning the JavaScript stuff from Jonas's course. One of the new things I've learned is how to use "use strict" mode. It's basically used at the top of the script and it works the "modern way".
-- [Resource 2](https://www.youtube.com/watch?v=2AfzKmgqWUE) - This is a great video which helped me understand how to use fetch() nethod.
+- [MDN Web Docs - Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - Helped in understanding how to work with `async/await` and error handling in API requests.
+- [MDN Web Docs - ARIA Labels](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) - Used to improve accessibility by adding meaningful labels to interactive elements.
+- [JavaScript.info - Async/Await](https://javascript.info/async-await) - A great explanation of how to use async functions effectively.
 
+## Installation Instructions
+
+### Clone the repository
+
+To get started, clone the repository using the following command:
+
+```sh
+git clone https://github.com/doileo/advice-generator-app.git
+```
+
+### Navigate to the project directory
+
+After cloning the repository, move into the project folder using the following command:
+
+```sh
+cd advice-generator-app
+```
+
+### Run the project
+
+Open `index.html` directly in your browser, or use a live server extension in your code editor for a better development experience.
+
+## Dependencies
+
+This project does not require any external dependencies. It runs using:
+
+- Vanilla JavaScript
+- HTML
+- CSS
+
+## Usage Instructions
+
+1. Open the app in your browser.
+2. Click the dice icon to generate a new piece of advice.
+3. Enjoy the randomly generated wisdom!
+
+## Project Structure
+
+### Key Files
+
+- `index.html` - Main HTML structure
+- `main.css` - Styling for the app
+- `main.js` - JavaScript functionality
+- `images/` - Folder containing icons and screenshots
 
 ## Author
 
-- Website - [Doina](https://doileo.github.io/portfolio/)
 - Frontend Mentor - [@Doileo](https://www.frontendmentor.io/profile/Doileo)
 - LinkedIn - [Doina Leovchin](https://www.linkedin.com/in/doinaleovchindeveloper/)
-
